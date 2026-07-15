@@ -1,6 +1,11 @@
+from . import panel_example
+from . import operator_example
+
 def register_addon() -> None:
-    pass
+    operator_example.register()
+    panel_example.register()
 
 
 def unregister_addon() -> None:
-    pass
+    panel_example.unregister()
+    operator_example.unregister()

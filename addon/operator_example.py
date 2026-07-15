@@ -17,3 +17,17 @@ class EXAMPLE_OT_operator(bpy.types.Operator):
         # Main code executed when the operator is called
         self.report({'INFO'}, "Operator executed")  # Message shown in Blender's status
         return {'FINISHED'}  # Indicates the operator finished successfully
+
+
+# ---------------------------- REGISTRATION ----------------------------
+classes_to_register = [EXAMPLE_OT_operator]
+
+
+def register() -> None:
+    for cls in classes_to_register:
+        bpy.utils.register_class(cls)
+
+
+def unregister() -> None:
+    for cls in reversed(classes_to_register):
+        bpy.utils.unregister_class(cls)

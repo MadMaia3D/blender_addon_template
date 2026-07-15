@@ -11,15 +11,28 @@ class EXAMPLE_PT_panel(bpy.types.Panel):
     bl_category = "Example"  # Sidebar tab name
     bl_context = ""  # Optional context where the panel is visible
     bl_options = {'DEFAULT_CLOSED'}  # Panel options (ex: start collapsed)
-    bl_parent_id = "parent_idname" # Optional the parent panel id_name
+    # bl_parent_id = "parent_idname" # Optional the parent panel id_name
     bl_order = 0 # Optional the priority order of the panel
 
     @classmethod
     def poll(cls, context) -> bool:  # Optional, used to check if the panel should be drawn
         return True
 
-    def draw(self, context):
+    def draw(self, context) -> None:
         layout = self.layout  # Layout used to draw UI elements
         layout.label(text="Text in the panel")  # Example label
-        layout.operator("example.operator")  # Button that calls an operator
-        
+        layout.operator("example.operator")  # Button that calls an operator. Uses the bl_idname of the operator
+
+
+# ---------------------------- REGISTRATION ----------------------------
+classes_to_register = [EXAMPLE_PT_panel]
+
+
+def register() -> None:
+    for cls in classes_to_register:
+        bpy.utils.register_class(cls)
+
+
+def unregister() -> None:
+    for cls in reversed(classes_to_register):
+        bpy.utils.unregister_class(cls)

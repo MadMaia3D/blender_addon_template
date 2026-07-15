@@ -1,7 +1,7 @@
 import bpy
 
 # class name general pattern = ADDONPREFIX_TYPE_name
-# class name panel pattern = ADDONPREFIX_OT_operator_name
+# class name operator pattern = ADDONPREFIX_OT_operator_name
 # operator bl_idname = addonprefix.operator_name
 class EXAMPLE_OT_operator(bpy.types.Operator):
     bl_idname = "example.operator"  # Unique operator identifier (category.name)

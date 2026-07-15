@@ -1,4 +1,5 @@
 import bpy
+from . import template_list_example
 
 # class name general pattern = ADDONPREFIX_TYPE_name
 # class name operator pattern = MYADDON_PT_main_panel
@@ -22,6 +23,10 @@ class EXAMPLE_PT_panel(bpy.types.Panel):
         layout = self.layout  # Layout used to draw UI elements
         layout.label(text="Text in the panel")  # Example label
         layout.operator("example.operator")  # Button that calls an operator. Uses the bl_idname of the operator
+
+        template_list_example.draw_example_template(context, layout)
+        layout.operator("example.add_to_example_list")
+        layout.operator("example.delete_from_list")
 
 
 # ---------------------------- REGISTRATION ----------------------------
